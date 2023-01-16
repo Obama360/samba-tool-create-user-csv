@@ -5,13 +5,16 @@
 # Nico Braun
 
 #read -p "CSV File location: " csvPath
-csvPath="users.txt"
+csvPath=$1
+seperatorNormal=";"
 
-while IFS= read -r line; do 
-  if [[ "$line" == "basedn="* ]]; then
-    basedn=$(printf "%s\n" "${line//'basedn='}")
-    echo "$basedn"
-  else
-    echo "$line" > /dev/null
-  fi
-done < "$csvPath"
+#get basedn from first line
+basedn=$(head -n 1 "$csvPath")
+basedn=$(printf "%s\n" "${basedn//'basedn='}")
+echo "$basedn"
+
+#rest of file
+while IFS="$seperatorNormal" read -r username name surname password groups; do
+  groups=$(echo $groups | sed 's/\[//g' | sed 's/\]//g')
+  echo "Username=$username, Password=$password, Groups=$groups"
+done < <(tail -n +2 "$csvPath")
