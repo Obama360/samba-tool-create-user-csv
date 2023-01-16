@@ -4,6 +4,11 @@
 # Created 2023-1
 # Nico Braun
 
+if [[ $1 == "" ]]; then
+  echo "usage: ./create-user.sh [user-csv-path]"
+  exit 0
+fi
+
 csvPath=$1
 seperator=";"
 seperatorGroups=","
