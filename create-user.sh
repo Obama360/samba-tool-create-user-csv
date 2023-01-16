@@ -25,7 +25,6 @@ while IFS="$seperator" read -r username name surname password groups; do
   IFS="$seperatorGroups" read -r -a groups <<< "$groups"
 
   #create user
-  echo "Username=$username, Password=$password, Groups=${groups[0]}"
   samba-tool user add "$username" "$password" --base-dn="$basedn" --given-name="$name" --surname="$surname" --display-name="$name $surname" -samaccountname="$username" && echo "created user $username" || echo "failed to create user $username"
 
   #add user to groups
