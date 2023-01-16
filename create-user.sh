@@ -4,12 +4,14 @@
 # Created 2023-1
 # Nico Braun
 
-read -p "CSV File location: " csvPath
+#read -p "CSV File location: " csvPath
+csvPath="users.txt"
 
 while IFS= read -r line; do 
   if [[ "$line" == "basedn="* ]]; then
-    echo "judihui geisschäs!"
+    basedn=$(printf "%s\n" "${line//'basedn='}")
+    echo "$basedn"
   else
-    echo "$line"
+    echo "$line" > /dev/null
   fi
 done < "$csvPath"
