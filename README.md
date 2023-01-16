@@ -2,4 +2,4 @@
 Create Users and add them to groups from CSV file with the samba-tool command
 ---
 
-This repo is under construction! (No working version yet)
+Script is created but not tested yet!
