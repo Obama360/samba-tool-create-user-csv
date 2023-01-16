@@ -17,6 +17,5 @@ fi
 csvPath=$1
 
 while IFS= read -r group; do
-  echo "$group"
-  #samba-tool group add $group && echo "created group $group" || echo "failed to create group $group"
+  samba-tool group add $group && echo "created group $group" || echo "failed to create group $group"
 done < "$csvPath"
