@@ -30,7 +30,7 @@ while IFS="$seperator" read -r username name surname password groups; do
   IFS="$seperatorGroups" read -r -a groups <<< "$groups"
 
   #create user
-  samba-tool user add "$username" "$password" --base-dn="$basedn" --given-name="$name" --surname="$surname" --display-name="$name $surname" -samaccountname="$username" && echo "created user $username" || echo "failed to create user $username"
+  sudo samba-tool user create "$username" "$password" --given-name="$name" --surname="$username" --userou="$basedn" && echo "created user $username" || echo "failed to create user $username"
 
   #add user to groups
   for group in "${groups[@]}"; do
