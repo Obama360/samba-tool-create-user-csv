@@ -18,10 +18,10 @@ fi
 csvPath=$1
 
 #get ou from first line
-oupath=$(head -n 1 "$csvPath")
-oupath=$(printf "%s\n" "${oupath//'oupath='}")
-echo "$basedn"
+ouPath=$(head -n 1 "$csvPath")
+ouPath=$(printf "%s\n" "${ouPath//'oupath='}")
+echo "OU = $ouPath"
 
 while IFS= read -r group; do
-  samba-tool group add $group && echo "created group $group" || echo "failed to create group $group"
-done < "$csvPath"
+  samba-tool group add $group --groupou="$ouPath" && echo "created group $group" || echo "failed to create group $group"
+done < <(tail -n +2 "$csvPath")
