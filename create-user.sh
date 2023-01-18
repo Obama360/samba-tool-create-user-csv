@@ -5,7 +5,7 @@
 # Nico Braun
 
 # CSV Template:
-# basedn=OU=Ou,OU=To,OU=Path,DC=domain,DC=name
+# ouPath=OU=Ou,OU=To,OU=Path
 # username;name;surname;password;[groups,seperated,by,comma]
 # ...
 
