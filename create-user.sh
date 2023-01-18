@@ -19,9 +19,9 @@ seperator=";"
 seperatorGroups=","
 
 #get basedn from first line
-basedn=$(head -n 1 "$csvPath")
-basedn=$(printf "%s\n" "${basedn//'basedn='}")
-echo "$basedn"
+ouPath=$(head -n 1 "$csvPath")
+ouPath=$(printf "%s\n" "${ouPath//'oupath='}")
+echo "OU = $ouPath"
 
 #process users
 while IFS="$seperator" read -r username name surname password groups; do
@@ -30,7 +30,7 @@ while IFS="$seperator" read -r username name surname password groups; do
   IFS="$seperatorGroups" read -r -a groups <<< "$groups"
 
   #create user
-  sudo samba-tool user create "$username" "$password" --given-name="$name" --surname="$username" --userou="$basedn" && echo "created user $username" || echo "failed to create user $username"
+  sudo samba-tool user create "$username" "$password" --given-name="$name" --surname="$username" --userou="$ouPath" && echo "created user $username" || echo "failed to create user $username"
 
   #add user to groups
   for group in "${groups[@]}"; do
