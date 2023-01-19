@@ -11,6 +11,7 @@ You will need a linux machine set up with samba-ldap and root access.
 3. Run the script with either `./create-user.sh <path to csv-file>` for the user script or `./create-group.sh <path to csv-file>` for the group script.
 
 ## CSV formatting
+Note that the seperators and order of columns can be changed in the script.
 ### groups CSV
 ```plaintext
 oupath=OU=ou,OU=to,OU=path
