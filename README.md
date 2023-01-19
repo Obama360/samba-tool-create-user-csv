@@ -12,7 +12,7 @@ You will need a linux machine set up with samba-ldap and root access.
 
 ## CSV formatting
 Note that the seperators and order of columns can be changed in the script.
-### groups CSV
+### CSV for group script
 ```plaintext
 oupath=OU=ou,OU=to,OU=path
 group1
@@ -20,7 +20,7 @@ group2
 ...
 ```
 
-### users CSV
+### CSV for user script
 Note that groups in this CSV must already exist, they will not be added if they don't exist!
 ```plaintext
 oupath=OU=ou,OU=to,OU=path
