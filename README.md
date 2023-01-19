@@ -21,6 +21,7 @@ group2
 ```
 
 ### users CSV
+Note that groups in this CSV must already exist, they will not be added if they don't exist!
 ```plaintext
 oupath=OU=ou,OU=to,OU=path
 username;name;surname;password;[groups,seperated,by,comma]
